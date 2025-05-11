@@ -7,10 +7,9 @@ const AboutPage({super.key});
 Widget build(BuildContext context) {
 return Scaffold(
 appBar: AppBar(title: const Text('Tentang')),
-body: Center(
+body: const Center(
 child: Text(
-'Aplikasi ini dibuat dengan Flutter.\nMendukung tema dan custom font.',
-style: Theme.of(context).textTheme.bodyMedium,
+'Aplikasi Todo List sederhana dengan Flutter.\nMendukung tema gelap dan terang serta penyimpanan lokal.',
 textAlign: TextAlign.center,
 ),
 ),

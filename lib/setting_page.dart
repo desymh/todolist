@@ -7,13 +7,9 @@ const SettingsPage({super.key});
 Widget build(BuildContext context) {
 return Scaffold(
 appBar: AppBar(title: const Text('Pengaturan')),
-body: Center(
-child: Text(
-'Fitur pengaturan belum tersedia.',
-style: Theme.of(context).textTheme.bodyMedium,
-),
+body: const Center(
+child: Text('Belum ada pengaturan tersedia.'),
 ),
 );
 }
 }
-
