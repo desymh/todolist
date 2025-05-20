@@ -3,9 +3,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'about_page.dart';
 import 'setting_page.dart';
+import 'package:provider/provider.dart';
+import 'widgets/theme_provider.dart'; // Buat file ini
+
 
 void main() {
-  runApp(const TodoListApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const TodoListApp(),
+    ),
+  );
 }
 
 class TodoListApp extends StatelessWidget {
@@ -13,6 +21,8 @@ class TodoListApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Todo List',
@@ -21,35 +31,22 @@ class TodoListApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
         textTheme: const TextTheme(
-          titleLarge: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Colors.teal,
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 16,
-            color: Colors.black87,
-          ),
+          titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.teal),
+          bodyMedium: TextStyle(fontSize: 16, color: Colors.black87),
         ),
       ),
       darkTheme: ThemeData.dark().copyWith(
         textTheme: const TextTheme(
-          titleLarge: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 16,
-            color: Colors.white70,
-          ),
+          titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+          bodyMedium: TextStyle(fontSize: 16, color: Colors.white70),
         ),
       ),
-      themeMode: ThemeMode.system,
+      themeMode: themeProvider.themeMode,
       home: const TodoHomePage(),
     );
   }
 }
+
 
 class TodoHomePage extends StatefulWidget {
   const TodoHomePage({super.key});
