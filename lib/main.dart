@@ -6,7 +6,7 @@ import 'setting_page.dart';
 import 'package:provider/provider.dart';
 import 'widgets/theme_provider.dart'; // Buat file ini
 
-
+//test branch baru
 void main() {
   runApp(
     ChangeNotifierProvider(
